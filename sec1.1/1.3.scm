@@ -1,0 +1,12 @@
+(define (square-sum x y)
+  (+ (* x x)
+     (* y y)))
+
+(define (take2 x y z)
+  (if (> x y)
+      (if (> y z)
+          (square-sum x y)
+          (square-sum x z))
+      (if (> x z)
+          (square-sum x y)
+          (square-sum y z))))
