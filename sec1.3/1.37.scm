@@ -1,22 +1,21 @@
+; recursive
 (define (cont-frac n d k)
-  (define (cf i)
-    (if (= i k) (/ (n i) (d i))
-        (/ (n i)
-           (+ (d i)
-              (cf (+ i 1))))))
-  (cf 1))
+  (define (descend i)
+    (if (< i k)
+        (/ (n i) (+ (d i) (descend (+ i 1))))
+        (/ (n i) (+ (d i)))))
+  (descend 1))
 
-(cont-frac (lambda (i) 1.0) (lambda (i) 1.0) 11)
-;Value: .6180555555555556
-
+; iterative
 (define (cont-frac n d k)
-  (define (cf-iter i total)
-    (cond ((= i 0) total)
-          ((= i k)
-           (cf-iter (- i 1) (/ (n i) (d i))))
-          (else
-           (cf-iter (- i 1) (/ (n i) (+ (d i) total))))))
-  (cf-iter k 0))
+  (define (iter i result)
+    (if (= i 0)
+        result
+        (iter (- i 1) (/ (n i) (+ (d i) result)))))
+  (iter k  0))
 
-(cont-frac (lambda (i) 1.0) (lambda (i) 1.0) 11)
-;Value: .6180555555555556
+
+(cont-frac (lambda (i) 1.0)
+           (lambda (i) 1.0)
+           10)
+;0.6179775280898876

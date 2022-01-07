@@ -2,5 +2,5 @@
   (define (iter a result)
     (if (> a b)
         result
-        (iter (next a) (+ result (term a)))))
+        (iter (next a) (+ (term a) result))))
   (iter a 0))

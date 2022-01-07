@@ -1,13 +1,16 @@
-(define (cubert-iter guess last-guess x)
-  (if (good-enough? guess last-guess)
+(define (improve guess x)
+  (/ (+ (/ x (square guess))
+        (* 2 guess))
+     3))
+
+(define (good-enough? guess x)
+  (< (abs (- (cube guess) x)) 0.001))
+
+(define (cbrt-iter guess x)
+  (if (good-enough? guess x)
       guess
-      (cubert-iter (improve x guess) guess x)))
+      (cbrt-iter (improve guess x)
+                 x)))
 
-(define (improve x y)
-  (/ (+ (/ x (* y y)) (* 2 y)) 3))
-
-(define (good-enough? improved-guess guess)
-  (< (abs (- improved-guess guess)) 0.001))
-
-(define (cubert x)
-  (cubert-iter 1.0 0 x))
+(define (cbrt x)
+  (cbrt-iter 1.0 x))

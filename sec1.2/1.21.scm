@@ -14,10 +14,10 @@
   (= (remainder b a) 0))
 
 (smallest-divisor 199)
-;Value: 199
+;199
 
 (smallest-divisor 1999)
-;Value: 1999
+;1999
 
 (smallest-divisor 19999)
-;Value: 7
+;7
