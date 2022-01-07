@@ -1,4 +1,3 @@
-; recursive
 (define (f n)
   (if (< n 3)
       n
@@ -6,16 +5,10 @@
          (* 2 (f (- n 2)))
          (* 3 (f (- n 3))))))
 
-; iterative
 (define (f n)
-  (define (f-iter t1 t2 t3 count)
-    (if (= n count)
-        (+ t1 (* t2 2) (* t3 3))
-        (f-iter (+ t1 (* t2 2) (* t3 3))
-                t1
-                t2
-                (+ count 1))))
-
-  (if (< n 3)
-      n
-      (f-iter 2 1 0 3)))
+  (define (iter a b c count)
+    (cond ((= count 0) 0)
+          ((= count 1) 1)
+          ((< count 3) a)
+          (else (iter (+ a (* 2 b) (* 3 c)) a b (- count 1)))))
+  (iter 2 1 0 n))

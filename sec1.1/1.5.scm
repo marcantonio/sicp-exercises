@@ -7,7 +7,8 @@
 
 (test 0 (p))
 
-; In a applicative-order evaluation, 'test' will resolve both operands before proceeding.  This will
-; lead to an infinite expansion of '(test 0 (p))' to '(test 0 (p))'.  In normal-order evaluation,
-; 'test' will only evaluate 'y' if necessary.  Since 'x' will always equal 0, 'y' (and thus 'p')
-; will never be evaluated.
+; Applicative: The program will recure infinitely because x and y will be evaluated immediately and
+; y (p) will expand forever.
+;
+; Normal: Will not recurse indefinitely because (= x 0) will evaluate to true and y will never be
+; evaluated.

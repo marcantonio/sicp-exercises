@@ -1,6 +1,6 @@
+(define tolerance 0.00001)
 
 (define (fixed-point f first-guess)
-  (define tolerance 0.00001)
   (define (close-enough? v1 v2)
     (< (abs (- v1 v2))
        tolerance))
@@ -11,8 +11,9 @@
           (try next))))
   (try first-guess))
 
+(define dx 0.00001)
+
 (define (deriv g)
-  (define dx 0.00001)
   (lambda (x)
     (/ (- (g (+ x dx)) (g x))
        dx)))
@@ -29,9 +30,9 @@
 (define (cubic a b c)
   (lambda (x)
     (+ (* x x x)
-       (* a x x)
+       (* a x x))
        (* b x)
        c)))
 
-(newtons-method (cubic 1 2 3) 1)
-;Value: -1.2756822036498454
+(newtons-method (cubic 3 2 1) 1)
+;-2.3247179572447267

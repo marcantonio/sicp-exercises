@@ -30,44 +30,34 @@
   (display " *** ")
   (display elapsed-time))
 
-(define (even? n)
-  (= (remainder n 2) 0))
+(define (search-for-primes start end)
+  (if (not (>= start end))
+      (cond ((even? start) (search-for-primes (+ start 1) end))
+            (else
+             (timed-prime-test start)
+             (search-for-primes (+ start 2) end)))))
 
-(define (search-for-primes n count)
-  (cond ((even? n)
-         (search-for-primes (+ n 1) count))
-        ((not (prime? n))
-         (search-for-primes (+ n 2) count))
-        (else
-         (cond ((= count 1)
-                (timed-prime-test n))
-               ((timed-prime-test n)
-                (search-for-primes (+ n 2) (- count 1)))))))
+(define (search-for-primes start end)
+  (if (even? start)
+      (search-for-primes (+ start 1) end)
+      (cond ((<= start end)
+             (timed-prime-test start)
+             (search-for-primes (+ start 2) end)))))
 
-; 10,000,000,000
-(search-for-primes 10000000000 3)
+; (search-for-primes 10000000000 10000000070)
+;10000000019 *** .06999999999999984
+;10000000033 *** .06999999999999984
+;10000000061 *** .07000000000000028
 
-10000000019 *** .08000000000000007
-10000000033 *** .08999999999999997
-10000000061 *** .08000000000000007
+; (search-for-primes 100000000000 100000000070)
+;100000000003 *** .2400000000000002
+;100000000019 *** .22000000000000064
+;100000000057 *** .21000000000000085
 
-; 100,000,000,000
-(search-for-primes 100000000000 3)
+; (search-for-primes 1000000000000 1000000000070)
+;1000000000039 *** .6699999999999999
+;1000000000061 *** .6800000000000006
+;1000000000063 *** .6699999999999999
 
-100000000003 *** .25
-100000000019 *** .27000000000000024
-100000000057 *** .2599999999999998
-
-; 1,000,000,000,000
-(search-for-primes 1000000000000 3)
-
-1000000000039 *** .8200000000000003
-1000000000061 *** .8100000000000005
-1000000000063 *** .8200000000000003
-
-; 10,000,000,000,000
-(search-for-primes 10000000000000 3)
-
-10000000000037 *** 2.5500000000000007
-10000000000051 *** 2.549999999999999
-10000000000099 *** 2.5500000000000007
+; Yes. For example, 0.24 * (sqrt 10) is ~0.75 which is
+; on the order of the reported ~0.66.

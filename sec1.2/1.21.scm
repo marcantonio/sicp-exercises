@@ -13,11 +13,6 @@
 (define (divides? a b)
   (= (remainder b a) 0))
 
-(smallest-divisor 199)
-;Value: 199
-
-(smallest-divisor 1999)
-;Value: 1999
-
-(smallest-divisor 19999)
-;Value: 7
+; 199
+; 1999
+; 7
