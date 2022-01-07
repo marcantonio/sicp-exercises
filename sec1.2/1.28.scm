@@ -27,13 +27,16 @@
       0
       x))
 
-; (fast-prime? 10 100)
+(fast-prime? 10 100)
 ;#f
-; (fast-prime? 11 100)
+
+(fast-prime? 11 100)
 ;#t
-; (fast-prime? 561 100)
+
+(fast-prime? 561 100)
 ;#f
-; (fast-prime? 2821 100)
+
+(fast-prime? 2821 100)
 ;#f
 
 ; Note: Something doesn't seem right with this one. 0 is never returned from

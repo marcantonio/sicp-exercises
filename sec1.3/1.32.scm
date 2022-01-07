@@ -16,11 +16,11 @@
                 (accumulate combiner null-value
                             term (next a) next b))))
 
-; (product identity 1 inc 4)
-; 24
+(product identity 1 inc 4)
+;24
 
-; (accumulate * 1 identity 1 inc 4)
-; 24
+(accumulate * 1 identity 1 inc 4)
+;24
 
 (define (sum term a next b)
   (define (iter a result)
@@ -37,8 +37,8 @@
         (iter (next a) (combiner (term a) result))))
   (iter a null-value))
 
-; (sum identity 1 inc 4)
+(sum identity 1 inc 4)
 ;10
 
-; (accumulate + 0 identity 1 inc 4)
+(accumulate + 0 identity 1 inc 4)
 ;10

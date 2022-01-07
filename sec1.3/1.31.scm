@@ -20,7 +20,7 @@
 (define (factorial n)
   (product identity 1 inc n))
 
-; (factorial 4)
+(factorial 4)
 ;24
 
 (define (pi-product n)
@@ -30,5 +30,5 @@
         (/ (+ i 2) (+ i 1))))
   (product pi-term 1.0 inc n))
 
-; (* (pi-product 1000.0) 4)
+(* (pi-product 1000.0) 4)
 ;3.143160705532257

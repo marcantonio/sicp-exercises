@@ -17,6 +17,6 @@
     (output 0))
 
   (line d)
-  (display "\n")
+  (newline)
   (if (not (= d 0))
       (pascals-triangle (- d 1))))

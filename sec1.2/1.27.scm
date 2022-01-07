@@ -19,11 +19,14 @@
           (else (iter (+ a 1)))))
   (iter 2))
 
-; (fermat-all 8)
+(fermat-all 8)
 ;#f
-; (fermat-all 11)
+
+(fermat-all 11)
 ;#t
-; (fermat-all 2821)
+
+(fermat-all 2821)
 ;#t
-; (prime? 2821)
+
+(prime? 2821)
 ;#f

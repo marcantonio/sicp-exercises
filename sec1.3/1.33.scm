@@ -35,7 +35,8 @@
 
 (define (sum-square-primes a b)
   (filtered-accumulate + 0 square a inc b prime?))
-; (sum-square-primes 1 10)
+
+(sum-square-primes 1 10)
 ;88
 
 (define (product-relprimes n)
@@ -46,5 +47,6 @@
   (define (relprime? i)
     (= 1 (gcd i n)))
   (filtered-accumulate * 1 identity 1 inc n relprime?))
-; (product-relprimes 10)
+
+(product-relprimes 10)
 ;189
